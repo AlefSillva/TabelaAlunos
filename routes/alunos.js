@@ -4,15 +4,17 @@ const sql = require('mssql');
 
 // Configurar a conexão com o banco de dados
 const config = {
-  server: 'LeehPC', // Endereço do servidor SQL
+  server: 'Leeh-PC', // Endereço do servidor SQL
   database: 'AlunosDB',
+  user: 'sa',
+  password: '150295',
   options: {
     trustServerCertificate: true, //
   },
 };
 
 // Rota para listar todos os alunos
-router.get('/alunos', async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const pool = await sql.connect(config);
     const result = await pool.request().query('SELECT * FROM Alunos');
