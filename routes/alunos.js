@@ -4,8 +4,6 @@ const sql = require('mssql');
 
 // Configurar a conexão com o banco de dados
 const config = {
-  user: '',
-  password: '',
   server: 'localhost', // Endereço do servidor SQL
   database: 'AlunosDB',
   options: {
