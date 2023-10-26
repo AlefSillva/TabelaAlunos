@@ -7,7 +7,7 @@ const swaggerDefinition = {
   },
   servers: [
     {
-      url: 'https://escola-fwsw5tegx-alefsillva.vercel.app/', // URL base da API (URL do Vercel)
+      url: 'https://escola-api-ruby.vercel.app/', // URL base da API (URL do Vercel)
       description: 'Servidor de Produção', // Você pode ajustar a descrição conforme necessário
     },
   ],
