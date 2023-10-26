@@ -13,7 +13,6 @@ const config = {
   },
 };
 
-
 // Rota para listar todos os alunos
 router.get('/', async (req, res) => {
   try {
@@ -47,17 +46,62 @@ router.get('/:id', async (req, res) => {
 
 // Rota para criar um novo aluno
 router.post('/', async (req, res) => {
-  // ... (código para criar um novo aluno)
+  const { Nome, Idade, NotaPrimeiroSemestre, NotaSegundoSemestre, NomeProfessor, NumeroSala } = req.body;
+
+  try {
+    const pool = await sql.connect(config);
+    const result = await pool.request()
+      .input('Nome', sql.NVarChar, Nome)
+      .input('Idade', sql.Int, Idade)
+      .input('NotaPrimeiroSemestre', sql.Float, NotaPrimeiroSemestre)
+      .input('NotaSegundoSemestre', sql.Float, NotaSegundoSemestre)
+      .input('NomeProfessor', sql.NVarChar, NomeProfessor)
+      .input('NumeroSala', sql.Int, NumeroSala)
+      .query('INSERT INTO Alunos (Nome, Idade, NotaPrimeiroSemestre, NotaSegundoSemestre, NomeProfessor, NumeroSala) VALUES (@Nome, @Idade, @NotaPrimeiroSemestre, @NotaSegundoSemestre, @NomeProfessor, @NumeroSala)');
+    
+    res.status(201).json({ message: 'Aluno criado com sucesso.' });
+  } catch (error) {
+    res.status(500).json({ error: 'Erro ao criar um novo aluno no banco de dados.' });
+  }
 });
 
 // Rota para atualizar os dados de um aluno (PUT)
 router.put('/:id', async (req, res) => {
-  // ... (código para atualizar um aluno)
+  const alunoId = req.params.id;
+  const { Nome, Idade, NotaPrimeiroSemestre, NotaSegundoSemestre, NomeProfessor, NumeroSala } = req.body;
+  
+  try {
+    const pool = await sql.connect(config);
+    const result = await pool.request()
+      .input('Id', sql.Int, alunoId)
+      .input('Nome', sql.NVarChar, Nome)
+      .input('Idade', sql.Int, Idade)
+      .input('NotaPrimeiroSemestre', sql.Float, NotaPrimeiroSemestre)
+      .input('NotaSegundoSemestre', sql.Float, NotaSegundoSemestre)
+      .input('NomeProfessor', sql.NVarChar, NomeProfessor)
+      .input('NumeroSala', sql.Int, NumeroSala)
+      .query('UPDATE Alunos SET Nome = @Nome, Idade = @Idade, NotaPrimeiroSemestre = @NotaPrimeiroSemestre, NotaSegundoSemestre = @NotaSegundoSemestre, NomeProfessor = @NomeProfessor, NumeroSala = @NumeroSala WHERE Id = @Id');
+    
+    res.json({ message: `Aluno com ID ${alunoId} atualizado com sucesso.` });
+  } catch (error) {
+    res.status(500).json({ error: 'Erro ao atualizar os dados do aluno no banco de dados.' });
+  }
 });
 
 // Rota para excluir um aluno (DELETE)
 router.delete('/:id', async (req, res) => {
-  // ... (código para excluir um aluno)
+  const alunoId = req.params.id;
+  
+  try {
+    const pool = await sql.connect(config);
+    const result = await pool.request()
+      .input('Id', sql.Int, alunoId)
+      .query('DELETE FROM Alunos WHERE Id = @Id');
+    
+    res.json({ message: `Aluno com ID ${alunoId} excluído com sucesso.` });
+  } catch (error) {
+    res.status(500).json({ error: 'Erro ao excluir o aluno do banco de dados.' });
+  }
 });
 
 module.exports = router;
