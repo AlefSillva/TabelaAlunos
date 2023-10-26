@@ -4,7 +4,7 @@ const sql = require('mssql');
 
 // Configurar a conexão com o banco de dados
 const config = {
-  server: 'localhost', // Endereço do servidor SQL
+  server: 'LeehPC', // Endereço do servidor SQL
   database: 'AlunosDB',
   options: {
     trustServerCertificate: true, // Configuração de certificado (geralmente usada em ambiente de desenvolvimento)
