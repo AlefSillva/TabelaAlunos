@@ -7,12 +7,12 @@ const config = {
   server: 'LeehPC', // Endereço do servidor SQL
   database: 'AlunosDB',
   options: {
-    trustServerCertificate: true, // Configuração de certificado (geralmente usada em ambiente de desenvolvimento)
+    trustServerCertificate: true, //
   },
 };
 
 // Rota para listar todos os alunos
-router.get('/', async (req, res) => {
+router.get('/alunos', async (req, res) => {
   try {
     const pool = await sql.connect(config);
     const result = await pool.request().query('SELECT * FROM Alunos');
