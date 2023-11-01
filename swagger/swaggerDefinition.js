@@ -7,7 +7,7 @@ const swaggerDefinition = {
   },
   servers: [
     {
-      url: 'https://escola-api-rose.vercel.app/', // Remova '/api-docs' da URL base
+      url: 'https://splendorous-kitsune-de29f5.netlify.app/', // Remova '/api-docs' da URL base
       description: 'Servidor de Produção',
     },
   ],
