@@ -1,11 +1,12 @@
 const express = require('express');
 const app = express();
-const port = process.env.PORT || 3000; 
+const cors = require('cors'); // Importe o módulo CORS
+const port = process.env.PORT || 3000;
 
 // Configuração do Swagger
 const swaggerJSDoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
-const swaggerDefinition = require('./swagger/swaggerDefinition'); 
+const swaggerDefinition = require('./swagger/swaggerDefinition');
 
 // Definir a documentação Swagger
 const options = {
@@ -22,7 +23,7 @@ app.get('/', (req, res) => {
 });
 
 // Rota para a documentação Swagger
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+app.use('/api-docs', cors(), swaggerUi.serve, swaggerUi.setup(swaggerSpec)); // Habilitar o CORS
 
 // Rota de alunos
 const alunosRouter = require('./routes/alunos');

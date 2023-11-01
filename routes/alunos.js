@@ -57,13 +57,18 @@ router.post('/', async (req, res) => {
       .input('NotaSegundoSemestre', sql.Float, NotaSegundoSemestre)
       .input('NomeProfessor', sql.NVarChar, NomeProfessor)
       .input('NumeroSala', sql.Int, NumeroSala)
-      .query('INSERT INTO Alunos (Nome, Idade, NotaPrimeiroSemestre, NotaSegundoSemestre, NomeProfessor, NumeroSala) VALUES (@Nome, @Idade, @NotaPrimeiroSemestre, @NotaSegundoSemestre, @NomeProfessor, @NumeroSala)');
-    
-    res.status(201).json({ message: 'Aluno criado com sucesso.' });
+      .query('INSERT INTO Alunos (Nome, Idade, NotaPrimeiroSemestre, NotaSegundoSemestre, NomeProfessor, NumeroSala) OUTPUT INSERTED.* VALUES (@Nome, @Idade, @NotaPrimeiroSemestre, @NotaSegundoSemestre, @NomeProfessor, @NumeroSala');
+
+    if (result.recordset.length > 0) {
+      res.status(201).json(result.recordset[0]);
+    } else {
+      res.status(500).json({ error: 'Erro ao criar um novo aluno no banco de dados.' });
+    }
   } catch (error) {
     res.status(500).json({ error: 'Erro ao criar um novo aluno no banco de dados.' });
   }
 });
+
 
 // Rota para atualizar os dados de um aluno (PUT)
 router.put('/:id', async (req, res) => {
