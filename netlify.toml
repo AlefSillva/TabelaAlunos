@@ -1,13 +1,11 @@
 [build]
-  command = "npm run build" # O comando para construir seu aplicativo (se necessário)
-  functions = "netlify-functions" # Pasta que contém funções serverless (se você estiver usando)
+  command = "npm start"
+  publish = "." # Substitua "public" pelo diretório de saída da sua API, se aplicável
+
 
 [[redirects]]
-  from = "/api/*" # A rota no Netlify
-  to = "/.netlify/functions/api/:splat" # Redirecionar para a função serverless ou rota apropriada do seu aplicativo
-
-[[redirects]]
-  from = "/*" # Captura todas as rotas
-  to = "/index.js" # Redirecionar para o arquivo principal do seu aplicativo Node.js
+  from = "/*" # Redirecionar todas as solicitações
+  to = "/index.js" # Redirecionar para o arquivo principal do aplicativo Node.js
   status = 200 # Use o status 200 para evitar erros "não encontrado"
+
 
