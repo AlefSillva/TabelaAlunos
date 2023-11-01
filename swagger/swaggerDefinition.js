@@ -7,7 +7,7 @@ const swaggerDefinition = {
   },
   servers: [
     {
-      url: 'https://splendorous-kitsune-de29f5.netlify.app/', // Remova '/api-docs' da URL base
+      url: 'http://localhost:3000', // Remova '/api-docs' da URL base
       description: 'Servidor de Produção',
     },
   ],
