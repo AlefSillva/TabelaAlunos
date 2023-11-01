@@ -7,7 +7,7 @@ const swaggerDefinition = {
   },
   servers: [
     {
-      url: 'http://localhost:3000', // Remova '/api-docs' da URL base
+      url: 'https://main--benevolent-sunburst-990b5f.netlify.app/', // Remova '/api-docs' da URL base
       description: 'Servidor de Produção',
     },
   ],
