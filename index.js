@@ -27,7 +27,7 @@ app.use('/api-docs', cors(), swaggerUi.serve, swaggerUi.setup(swaggerSpec)); // 
 
 // Rota de alunos
 const alunosRouter = require('./routes/alunos');
-app.use('/', alunosRouter);
+app.use('/alunos', alunosRouter);
 
 app.listen(3000, () => {
   console.log(`Servidor rodando em http://localhost:3000`);
