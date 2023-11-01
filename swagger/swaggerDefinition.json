@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "https://main--benevolent-sunburst-990b5f.netlify.app/",
+      "url": "https://benevolent-sunburst-990b5f.netlify.app/",
       "description": "Servidor de Produção"
     }
   ],
