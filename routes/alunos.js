@@ -2,6 +2,13 @@ const express = require('express');
 const router = express.Router();
 const sql = require('mssql');
 
+// Importeação das funções 
+const addAluno = require('./addAluno');
+const deleteAluno = require('./deleteAluno');
+const getAlunos = require('./getAlunos');
+const getAlunosById = require('./getAlunosById');
+const updateAluno = require('./updateAluno');
+
 // Configurar a conexão com o banco de dados
 const config = {
   server: 'Leeh-PC', // Endereço do servidor SQL
