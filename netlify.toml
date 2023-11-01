@@ -1,11 +1,8 @@
 [build]
-command = "npm install && npm start"
-publish = "."
-
+command = "npm run build"  # Use o comando de construção apropriado
+publish = "."  # O diretório de publicação
 
 [[redirects]]
-  from = "/*" # Redirecionar todas as solicitações
-  to = "/index.js" # Redirecionar para o arquivo principal do aplicativo Node.js
-  status = 200 # Use o status 200 para evitar erros "não encontrado"
-
-
+from = "/*"
+to = "/index.js"
+status = 200
