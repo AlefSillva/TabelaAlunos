@@ -30,6 +30,6 @@ const alunosRouter = require('./routes/alunos');
 app.use('/alunos', alunosRouter);
 
 app.listen(port, () => {
-  console.log(`Servidor rodando na porta ${port}`);
+  console.log(`Servidor rodando em https:localhost:${port}`);
 });
 
