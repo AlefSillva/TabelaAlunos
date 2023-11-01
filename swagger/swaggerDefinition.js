@@ -7,7 +7,7 @@ const swaggerDefinition = {
   },
   servers: [
     {
-      url: 'http://localhost:3000', // Remova '/api-docs' da URL base
+      url: 'https://escola-api-rose.vercel.app/', // Remova '/api-docs' da URL base
       description: 'Servidor de Produção',
     },
   ],
