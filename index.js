@@ -17,7 +17,7 @@ const swaggerSpec = swaggerJSDoc(options);
 
 // Configuração do CORS
 app.use(cors({
-  origin: 'https://benevolent-sunburst-990b5f.netlify.app/', // Substitua pelo domínio do Swagger UI
+  origin: 'https://benevolent-sunburst-990b5f.netlify.app', // Substitua pelo domínio do Swagger UI
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   optionsSuccessStatus: 204,
 }));
