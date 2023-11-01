@@ -23,7 +23,7 @@ app.get('/', (req, res) => {
 });
 
 // Rota para a documentação Swagger
-app.use('/', cors(), swaggerUi.serve, swaggerUi.setup(swaggerSpec)); // Habilitar o CORS
+app.use('/api-docs', cors(), swaggerUi.serve, swaggerUi.setup(swaggerSpec)); // Habilitar o CORS
 
 // Rota de alunos
 const alunosRouter = require('./routes/alunos');
